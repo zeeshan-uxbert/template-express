@@ -49,6 +49,8 @@ src/
   db/
     typeorm.js
     mongoose.js
+    migrations/
+      1700000000000-CreateUsers.js
   services/
     email/
       index.js
@@ -97,6 +99,7 @@ Scripts
 - `npm run start` - start without env file
 - `npm run lint` / `npm run lint:fix`
 - `npm run format`
+- `npm run typeorm:migrate` / `npm run typeorm:revert`
 
 Operational Notes
 -----------------
@@ -113,6 +116,7 @@ Extending
 - Controllers: add new controller modules in `src/controllers/` and mount in `src/routes/`.
 - Services: implement the interfaces in `src/services/` and swap implementations via DI or factory.
 - Databases: add TypeORM entities, Mongoose models, and wire in `src/loaders/index.js`.
+  - TypeORM migrations: place files under `src/db/migrations/` and run scripts.
 
 Security Notes
 --------------
