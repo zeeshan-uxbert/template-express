@@ -1,16 +1,15 @@
 import { Router } from 'express';
-import { jwtGuard } from '../security/jwtGuard.js';
+import { jwtGuard } from '../../../security/jwtGuard.js';
 import { AuthController } from '../controllers/auth.controller.js';
-import { features } from '../config/features.js';
-import { createDataSource } from '../db/typeorm.js';
-import { UserModel } from '../models/user.model.js';
-import { TypeOrmUserRepository, MongooseUserRepository } from '../repositories/user.repository.js';
-import { UserService } from '../services/user.service.js';
+import { features } from '../../../config/features.js';
+import { createDataSource } from '../../../db/typeorm.js';
+import { UserModel } from '../../users/models/user.model.js';
+import { TypeOrmUserRepository, MongooseUserRepository } from '../../users/repositories/user.repository.js';
+import { UserService } from '../../users/services/user.service.js';
 
-export function authRouter() {
+export function authModuleRouter() {
 	const r = Router();
 
-	// Demo DI: choose repo by feature flag
 	let userRepo = null;
 	if (features.typeorm) {
 		const ds = createDataSource();

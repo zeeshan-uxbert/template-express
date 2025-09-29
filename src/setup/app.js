@@ -9,7 +9,7 @@ import { requestId } from '../middlewares/requestId.js';
 import { i18nMiddleware } from '../middlewares/i18n.js';
 import { errorHandler, notFoundHandler } from '../middlewares/error.js';
 import { healthRouter } from '../routes/health.js';
-import { authRouter } from '../routes/auth.js';
+import { authModuleRouter } from '../modules/auth/routes/index.js';
 
 export async function createApp() {
 	const app = express();
@@ -31,9 +31,7 @@ export async function createApp() {
 
 	app.use('/health', healthRouter());
 
-	if (features.auth) {
-		app.use('/auth', authRouter());
-	}
+	if (features.auth) app.use('/auth', authModuleRouter());
 
 	app.use(notFoundHandler);
 	app.use(errorHandler);

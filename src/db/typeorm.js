@@ -1,6 +1,6 @@
 // Placeholder for TypeORM setup; user can add entities later
 import { DataSource } from 'typeorm';
-import { UserEntity } from '../entities/User.entity.js';
+import { UserEntity } from '../modules/users/entities/User.entity.js';
 
 export function createDataSource() {
 	return new DataSource({
