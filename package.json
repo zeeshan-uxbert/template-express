@@ -7,6 +7,8 @@
     "start": "node src/server.js",
     "typeorm:migrate": "node --env-file=.env src/scripts/typeorm-migrate.js up",
     "typeorm:revert": "node --env-file=.env src/scripts/typeorm-migrate.js down",
+    "docker:up": "docker compose up -d",
+    "docker:down": "docker compose down -v",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format": "prettier --write ."

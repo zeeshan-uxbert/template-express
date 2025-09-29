@@ -67,6 +67,9 @@ Getting Started
    - `npm install`
 3. Start server:
    - `npm run dev`
+4. Start local databases with Docker (optional):
+   - `npm run docker:up`
+   - Stop and clean: `npm run docker:down`
 
 Environment Flags (Feature Toggles)
 -----------------------------------
@@ -100,6 +103,7 @@ Scripts
 - `npm run lint` / `npm run lint:fix`
 - `npm run format`
 - `npm run typeorm:migrate` / `npm run typeorm:revert`
+- `npm run docker:up` / `npm run docker:down`
 
 Operational Notes
 -----------------
