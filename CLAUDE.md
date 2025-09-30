@@ -5,18 +5,22 @@ This project is a Node.js Express application with TypeORM, Redis, MongoDB, and 
 ## Commands
 
 ### Development
+
 - `npm run dev` - Start development server with nodemon
 - `npm start` - Start production server
 
 ### Database
+
 - `npm run typeorm:migrate` - Run TypeORM migrations up
 - `npm run typeorm:revert` - Revert TypeORM migrations
 
 ### Docker
+
 - `npm run docker:up` - Start Docker containers
 - `npm run docker:down` - Stop Docker containers and remove volumes
 
 ### Code Quality
+
 - `npm run lint` - Run ESLint
 - `npm run lint:fix` - Run ESLint with auto-fix
 - `npm run format` - Format code with Prettier
