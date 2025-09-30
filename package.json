@@ -11,8 +11,7 @@
     "docker:down": "docker compose down -v",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "format": "prettier --write .",
-    "swagger": "node ./src/scripts/generate-swagger.js"
+    "format": "prettier --write ."
   },
   "repository": {
     "type": "git",
