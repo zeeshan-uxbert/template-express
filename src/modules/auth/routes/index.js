@@ -1,14 +1,15 @@
 import { Router } from 'express';
+
 import { features } from '../../../config/features.js';
-import { jwtGuard } from '../../../security/jwtGuard.js';
 import { createDataSource } from '../../../db/typeorm.js';
+import { jwtGuard } from '../../../security/jwtGuard.js';
 import { UserModel } from '../../users/models/user.model.js';
-import { UserService } from '../../users/services/user.service.js';
-import { AuthController } from '../controllers/auth.controller.js';
 import {
   TypeOrmUserRepository,
   MongooseUserRepository,
 } from '../../users/repositories/user.repository.js';
+import { UserService } from '../../users/services/user.service.js';
+import { AuthController } from '../controllers/auth.controller.js';
 
 export function authModuleRouter() {
   const r = Router();

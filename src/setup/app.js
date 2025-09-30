@@ -1,3 +1,5 @@
+import compression from 'compression';
+import cors from 'cors';
 import express from 'express';
 import helmet from 'helmet';
 import cors from 'cors';
@@ -5,12 +7,12 @@ import compression from 'compression';
 import { writeFileSync } from 'fs';
 
 import { features } from '../config/features.js';
-import { requestLogger } from '../middlewares/requestLogger.js';
-import { requestId } from '../middlewares/requestId.js';
-import { i18nMiddleware } from '../middlewares/i18n.js';
 import { errorHandler, notFoundHandler } from '../middlewares/error.js';
-import { healthRouter } from '../routes/health.js';
+import { i18nMiddleware } from '../middlewares/i18n.js';
+import { requestId } from '../middlewares/requestId.js';
+import { requestLogger } from '../middlewares/requestLogger.js';
 import { authModuleRouter } from '../modules/auth/routes/index.js';
+import { healthRouter } from '../routes/health.js';
 
 import swaggerUi from 'swagger-ui-express';
 import swaggerJSDoc from 'swagger-jsdoc';

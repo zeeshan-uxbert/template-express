@@ -1,4 +1,5 @@
 import morgan from 'morgan';
+
 import { logger } from '../setup/logger.js';
 
 export function requestLogger() {

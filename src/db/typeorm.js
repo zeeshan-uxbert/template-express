@@ -1,5 +1,7 @@
-// Placeholder for TypeORM setup; user can add entities later
 import { DataSource } from 'typeorm';
+
+import { CreateUsers1700000000000 } from './migrations/1700000000000-CreateUsers.js';
+import { Testing1759227992051 } from './migrations/1759227992051-Testing.js';
 import { UserEntity } from '../modules/users/entities/User.entity.js';
 
 export function createDataSource() {
@@ -13,5 +15,7 @@ export function createDataSource() {
     synchronize: false,
     logging: false,
     entities: [UserEntity],
+    migrations: [CreateUsers1700000000000, Testing1759227992051],
+    migrationsTableName: 'migrations',
   });
 }

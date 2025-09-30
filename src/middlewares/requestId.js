@@ -1,5 +1,5 @@
-import { v4 as uuidv4 } from 'uuid';
 import morgan from 'morgan';
+import { v4 as uuidv4 } from 'uuid';
 
 // Adds a request id to req.id and X-Request-Id header
 export function requestId() {

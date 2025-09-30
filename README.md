@@ -62,13 +62,15 @@ src/
 
 1. Copy environment file and configure:
    - `cp .env.example .env`
-2. Install deps:
+2. Install dependencies:
    - `npm install`
-3. Start server:
-   - `npm run dev`
-4. Start local databases with Docker (optional):
+3. Start local databases with Docker (optional):
    - `npm run docker:up`
-   - Stop and clean: `npm run docker:down`
+4. Initialize database and run migrations (if using TypeORM):
+   - `npm run db:setup`
+   - Or manually: `npm run db:init` then `npm run typeorm:migrate`
+5. Start server:
+   - `npm run dev`
 
 ## Environment Flags (Feature Toggles)
 
@@ -99,10 +101,18 @@ src/
 
 - `npm run dev` - start with Nodemon and `.env`
 - `npm run start` - start without env file
+- `npm run db:init` - create database if it doesn't exist
+- `npm run db:setup` - initialize DB and run all migrations
+- `npm run typeorm:create <MigrationName>` - create new migration
+- `npm run typeorm:migrate` / `npm run typeorm:revert` - run/revert migrations
+- `npm run docker:up` / `npm run docker:down`
 - `npm run lint` / `npm run lint:fix`
 - `npm run format`
-- `npm run typeorm:migrate` / `npm run typeorm:revert`
-- `npm run docker:up` / `npm run docker:down`
+
+## Git Hooks (Husky)
+
+- **pre-commit**: Runs Prettier and ESLint on staged files via `lint-staged`
+- **pre-push**: Runs full lint check to ensure code quality before push
 
 ## Operational Notes
 

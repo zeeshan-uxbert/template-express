@@ -1,5 +1,5 @@
 export class EmailService {
-  async send(input) {
+  async send(_input) {
     throw new Error('Not implemented');
   }
 }
