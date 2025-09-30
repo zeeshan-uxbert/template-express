@@ -44,7 +44,7 @@ export function authModuleRouter() {
    *             properties:
    *               email:
    *                 type: string
-   *                 example: user@example.com
+   *                 example: newuser@example.com
    *               password:
    *                 type: string
    *                 example: secret123
