@@ -5,25 +5,23 @@ import { connectMongoose } from '../db/mongoose.js';
 import { createRedis } from '../clients/redisClient.js';
 
 export async function load(optionals = {}) {
-	const loaded = {};
+  const loaded = {};
 
-	if (features.typeorm) {
-		loaded.sql = createDataSource();
-		await loaded.sql.initialize();
-		logger.info('TypeORM initialized');
-	}
+  if (features.typeorm) {
+    loaded.sql = createDataSource();
+    await loaded.sql.initialize();
+    logger.info('TypeORM initialized');
+  }
 
-	if (features.mongoose) {
-		loaded.mongo = await connectMongoose();
-		logger.info('Mongoose connected');
-	}
+  if (features.mongoose) {
+    loaded.mongo = await connectMongoose();
+    logger.info('Mongoose connected');
+  }
 
-	if (features.redis || features.bullmq) {
-		loaded.redis = await createRedis();
-		logger.info('Redis connected');
-	}
+  if (features.redis || features.bullmq) {
+    loaded.redis = await createRedis();
+    logger.info('Redis connected');
+  }
 
-	return { ...loaded, ...optionals };
+  return { ...loaded, ...optionals };
 }
-
-

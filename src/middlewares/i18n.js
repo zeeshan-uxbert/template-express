@@ -8,19 +8,17 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 export async function i18nMiddleware() {
-	if (!i18next.isInitialized) {
-		await i18next
-			.use(Backend)
-			.use(i18nextMiddleware.LanguageDetector)
-			.init({
-				fallbackLng: 'en',
-				backend: { loadPath: path.join(__dirname, '../../locales/{{lng}}/{{ns}}.json') },
-				supportedLngs: ['en', 'ar'],
-				detection: { order: ['header'], caches: false },
-				preload: ['en'],
-			});
-	}
-	return i18nextMiddleware.handle(i18next);
+  if (!i18next.isInitialized) {
+    await i18next
+      .use(Backend)
+      .use(i18nextMiddleware.LanguageDetector)
+      .init({
+        fallbackLng: 'en',
+        backend: { loadPath: path.join(__dirname, '../../locales/{{lng}}/{{ns}}.json') },
+        supportedLngs: ['en', 'ar'],
+        detection: { order: ['header'], caches: false },
+        preload: ['en'],
+      });
+  }
+  return i18nextMiddleware.handle(i18next);
 }
-
-
