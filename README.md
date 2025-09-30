@@ -104,6 +104,11 @@ src/
 - `npm run typeorm:migrate` / `npm run typeorm:revert`
 - `npm run docker:up` / `npm run docker:down`
 
+## Git Hooks (Husky)
+
+- **pre-commit**: Runs Prettier and ESLint on staged files via `lint-staged`
+- **pre-push**: Runs full lint check to ensure code quality before push
+
 ## Operational Notes
 
 - Request correlation: every request gets an `X-Request-Id`, logged by the HTTP logger.
