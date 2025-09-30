@@ -1,9 +1,9 @@
 import 'dotenv/config';
 import http from 'http';
 
+import { load } from './loaders/index.js';
 import { createApp } from './setup/app.js';
 import { logger } from './setup/logger.js';
-import { load } from './loaders/index.js';
 
 const port = Number(process.env.PORT || 3000);
 

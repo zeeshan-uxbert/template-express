@@ -1,8 +1,8 @@
 export class UserRepository {
-  async createUser(input) {
+  async createUser(_input) {
     throw new Error('Not implemented');
   }
-  async getUserByEmail(email) {
+  async getUserByEmail(_email) {
     throw new Error('Not implemented');
   }
 }
