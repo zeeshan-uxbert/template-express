@@ -14,4 +14,3 @@ const swaggerOptions = {
 
 const swaggerSpec = swaggerJSDoc(swaggerOptions);
 writeFileSync('./swagger.json', JSON.stringify(swaggerSpec, null, 2));
-console.log('swagger.json generated!');
