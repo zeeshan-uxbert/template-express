@@ -1,15 +1,12 @@
 export class NotificationService {
-	async notify(input) {
-		throw new Error('Not implemented');
-	}
+  async notify(_input) {
+    throw new Error('Not implemented');
+  }
 }
 
 export class LogNotificationService extends NotificationService {
-	async notify(input) {
-		// eslint-disable-next-line no-console
-		console.log('Notification', input);
-		return { success: true };
-	}
+  async notify(input) {
+    console.log('Notification', input);
+    return { success: true };
+  }
 }
-
-

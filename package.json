@@ -5,9 +5,18 @@
   "scripts": {
     "dev": "nodemon --env-file .env src/server.js",
     "start": "node src/server.js",
+    "db:init": "node --env-file=.env src/scripts/init-db.js",
+    "db:setup": "npm run db:init && npm run typeorm:migrate",
+    "typeorm:create": "node src/scripts/create-migration.js",
+    "typeorm:migrate": "node --env-file=.env src/scripts/typeorm-migrate.js up",
+    "typeorm:revert": "node --env-file=.env src/scripts/typeorm-migrate.js down",
+    "swagger:generate": "node src/scripts/generate-swagger.js",
+    "docker:up": "docker compose up -d",
+    "docker:down": "docker compose down -v",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "prepare": "husky"
   },
   "repository": {
     "type": "git",
@@ -47,6 +56,7 @@
     "morgan": "^1.10.1",
     "multer": "^2.0.2",
     "nodemailer": "^7.0.6",
+    "pg": "^8.16.3",
     "pino": "^9.12.0",
     "pino-pretty": "^13.1.1",
     "prisma": "^6.16.2",
@@ -65,7 +75,18 @@
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-promise": "^7.2.1",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.2.3",
     "nodemon": "^3.1.10",
     "prettier": "^3.6.2"
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier --write",
+      "eslint --fix"
+    ],
+    "*.{json,md,yml,yaml}": [
+      "prettier --write"
+    ]
   }
 }
