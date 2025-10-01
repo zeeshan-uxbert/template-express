@@ -2,7 +2,6 @@ import compression from 'compression';
 import cors from 'cors';
 import express from 'express';
 import helmet from 'helmet';
-
 import { features } from '../config/features.js';
 import { errorHandler, notFoundHandler } from '../middlewares/error.js';
 import { i18nMiddleware } from '../middlewares/i18n.js';
@@ -10,6 +9,7 @@ import { requestId } from '../middlewares/requestId.js';
 import { requestLogger } from '../middlewares/requestLogger.js';
 import { authModuleRouter } from '../modules/auth/routes/index.js';
 import { healthRouter } from '../routes/health.js';
+import { swaggerSpec, swaggerUi } from '../scripts/generate-swagger.js';
 
 export async function createApp() {
   const app = express();
@@ -30,6 +30,7 @@ export async function createApp() {
   }
 
   app.use('/health', healthRouter());
+  app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
   if (features.auth) app.use('/auth', authModuleRouter());
 
