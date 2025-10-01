@@ -10,6 +10,7 @@
     "typeorm:create": "node src/scripts/create-migration.js",
     "typeorm:migrate": "node --env-file=.env src/scripts/typeorm-migrate.js up",
     "typeorm:revert": "node --env-file=.env src/scripts/typeorm-migrate.js down",
+    "swagger:generate": "node src/scripts/generate-swagger.js",
     "docker:up": "docker compose up -d",
     "docker:down": "docker compose down -v",
     "lint": "eslint .",

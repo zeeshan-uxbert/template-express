@@ -15,4 +15,5 @@ export const features = {
   typeorm: envFlag('FEATURE_TYPEORM', 'false'),
   mongoose: envFlag('FEATURE_MONGOOSE', 'false'),
   strapi: envFlag('FEATURE_STRAPI', 'false'),
+  swagger: envFlag('FEATURE_SWAGGER', 'true'),
 };

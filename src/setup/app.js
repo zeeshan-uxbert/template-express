@@ -2,6 +2,7 @@ import compression from 'compression';
 import cors from 'cors';
 import express from 'express';
 import helmet from 'helmet';
+
 import { features } from '../config/features.js';
 import { errorHandler, notFoundHandler } from '../middlewares/error.js';
 import { i18nMiddleware } from '../middlewares/i18n.js';
@@ -30,7 +31,10 @@ export async function createApp() {
   }
 
   app.use('/health', healthRouter());
-  app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+
+  if (features.swagger) {
+    app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+  }
 
   if (features.auth) app.use('/auth', authModuleRouter());
 

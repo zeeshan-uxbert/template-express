@@ -14,6 +14,7 @@ Production-grade Express.js template with modular, toggleable features. Enable o
 - Strapi API client
 - Email service (interface + Nodemailer implementation)
 - Notification service (interface + log implementation)
+- Swagger/OpenAPI documentation with interactive UI
 - Linting: ESLint + Prettier
 
 ## Project Structure
@@ -85,6 +86,7 @@ src/
 - FEATURE_TYPEORM=true|false
 - FEATURE_MONGOOSE=true|false
 - FEATURE_STRAPI=true|false
+- FEATURE_SWAGGER=true|false (default: true)
 
 ## Key Environment Variables
 
@@ -105,6 +107,7 @@ src/
 - `npm run db:setup` - initialize DB and run all migrations
 - `npm run typeorm:create <MigrationName>` - create new migration
 - `npm run typeorm:migrate` / `npm run typeorm:revert` - run/revert migrations
+- `npm run swagger:generate` - regenerate swagger documentation
 - `npm run docker:up` / `npm run docker:down`
 - `npm run lint` / `npm run lint:fix`
 - `npm run format`
@@ -120,9 +123,84 @@ src/
 - Graceful shutdown: `SIGINT`/`SIGTERM` closes HTTP and connected resources (Redis/SQL/Mongo).
 - Configure Nodemon in `nodemon.json`.
 
-## Swagger/OpenAPI
+## Swagger/OpenAPI Documentation
 
-Add your OpenAPI spec with `swagger-jsdoc` and mount with `swagger-ui-express`.
+The project includes comprehensive API documentation using Swagger/OpenAPI 3.0.
+
+### Features
+
+- **Toggleable feature** - Enable/disable with `FEATURE_SWAGGER` environment variable
+- **Auto-generated documentation** from JSDoc comments in route files
+- **Interactive API explorer** at `/api-docs` endpoint (when enabled)
+- **JWT Bearer authentication** support in the documentation
+- **Comprehensive endpoint coverage** for all auth routes
+- **Request/response schemas** with examples
+
+### Available Endpoints
+
+- **Health Check**: `GET /health` - Server health status
+- **Authentication**:
+  - `POST /auth/login` - User login with email/password
+  - `POST /auth/register` - User registration (if enabled)
+  - `GET /auth/me` - Get current user profile (requires JWT)
+
+### Accessing Documentation
+
+1. Start the server: `npm run dev`
+2. Navigate to: `http://localhost:3000/api-docs`
+3. Use the interactive interface to test endpoints
+
+### Adding Documentation to New Routes
+
+Add JSDoc comments above your route handlers:
+
+```javascript
+/**
+ * @openapi
+ * /your-endpoint:
+ *   post:
+ *     summary: Your endpoint summary
+ *     tags:
+ *       - YourTag
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               field:
+ *                 type: string
+ *     responses:
+ *       200:
+ *         description: Success response
+ */
+```
+
+### Regenerating Documentation
+
+The swagger specification is auto-generated from route comments. To regenerate:
+
+```bash
+npm run swagger:generate
+```
+
+### Advanced Features
+
+- **Version Control**: API version is included in the OpenAPI spec (currently v1.0.0)
+- **Security Schemes**: JWT Bearer authentication is pre-configured
+- **Error Documentation**: Standard HTTP error codes are documented for each endpoint
+- **Request Validation**: Schema validation for request bodies
+- **Response Examples**: Detailed response schemas with example data
+
+### Customization
+
+You can customize the swagger configuration by modifying `src/scripts/generate-swagger.js`:
+
+- Change API title and version
+- Add custom security schemes
+- Modify server information
+- Add global tags and metadata
 
 ## Extending
 
