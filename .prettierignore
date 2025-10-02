@@ -1,0 +1,40 @@
+# Dependencies
+node_modules/
+
+# Build outputs
+dist/
+build/
+coverage/
+
+# Logs
+logs/
+*.log
+
+# Environment files
+.env
+.env.*
+
+# Git
+.git/
+.husky/
+
+# Generated files
+swagger.json
+
+# Lock files (don't format these)
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
+
+# Database
+*.db
+*.sqlite
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
